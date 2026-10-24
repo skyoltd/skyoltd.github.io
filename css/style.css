@@ -121,7 +121,7 @@ ul { list-style: none; }
   align-items: center;
   justify-content: space-between;
 }
-.brand-logo { height: 42px; width: auto; transition: height var(--transition); }
+.brand-logo { height: 92px; width: auto; transition: height var(--transition); }
 .site-header.scrolled .brand-logo { height: 34px; }
 
 .main-nav { display: flex; align-items: center; gap: 34px; }
@@ -268,8 +268,8 @@ ul { list-style: none; }
 }
 .trust-inner {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
   text-align: center;
 }
 .trust-item {
@@ -384,7 +384,7 @@ section { padding: 110px 0; position: relative; }
 .about-copy p { color: var(--muted); margin-bottom: 18px; }
 .about-stats {
   display: flex;
-  gap: 44px;
+  gap: 64px;
   margin-top: 34px;
   padding-top: 30px;
   border-top: 1px solid rgba(233,172,31,0.2);

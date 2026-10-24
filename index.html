@@ -50,14 +50,21 @@
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
   <div class="hero-media" aria-hidden="true">
-    <img src="images/hero-bg.png" alt="" class="hero-bg-img" onerror="this.remove()">
-    <div class="hero-overlay"></div>
+    <img src="images/hero-bg.png" alt="" class="hero-bg-img active" onerror="this.remove()">
+    <img src="images/london.png" alt="" class="hero-bg-img" loading="lazy" onerror="this.remove()">
+    <img src="images/london1.png" alt="" class="hero-bg-img" loading="lazy" onerror="this.remove()">
+    <!-- <div class="hero-overlay"></div> -->
+
   </div>
 
+  <button class="hero-arrow hero-prev" id="heroPrev" aria-label="Previous image">&#8249;</button>
+  <button class="hero-arrow hero-next" id="heroNext" aria-label="Next image">&#8250;</button>
+
   <div class="container hero-content">
-    <h1 class="reveal">Effortless Living.<br><span class="gold-text">Impeccable</span> Property Care.</h1>
-    <p class="hero-sub reveal">SKYO LTD. provides discreet, dependable concierge and building management services for residents, landlords and residential management companies across London.</p>
+    <h1 class="reveal"><center> Effortless Living. <span class="gold-text">Impeccable</span> Property Care.</center></h1>
+    <p class="hero-sub reveal"><b>SKYO LTD. provides discreet, dependable concierge and building management services for residents, landlords and residential management companies across London.</b></p>
     <div class="hero-actions reveal">
+      
       <a href="#contact" class="btn btn-gold">Enquire Now</a>
       <a href="#services" class="btn btn-outline">Our Services</a>
     </div>

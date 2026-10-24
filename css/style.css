@@ -1,7 +1,3 @@
-/* ==========================================================================
-   SKYO LTD. — stylesheet
-   Palette pulled from logo.png (gold #F5B400 / #F8D000 on black)
-   ========================================================================== */
 
 :root {
   --black:        #0a0a0a;
@@ -12,6 +8,7 @@
   --gold:          #e9ac1f;
   --gold-light:    #f8d000;
   --gold-dark:     #a86e12;
+  /*  --gold-gradient: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-dark) 100%); */
   --gold-gradient: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-dark) 100%);
   --muted:         #b9b3a4;
 
@@ -184,8 +181,18 @@ ul { list-style: none; }
   align-items: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 20% 20%, rgba(233,172,31,0.10), transparent 55%),
-    radial-gradient(ellipse at 80% 80%, rgba(233,172,31,0.08), transparent 55%),
+    radial-gradient(ellipse at 20% 20%, rgba(242, 242, 242, 0.1), transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(239, 238, 236, 0.08), transparent 55%),
+
+/* 
+
+radial-gradient(ellipse at 20% 20%, rgba(233,172,31,0.10), transparent 55%),
+radial-gradient(ellipse at 80% 80%, rgba(233,172,31,0.08), transparent 55%),
+
+background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.75) 60%, var(--black) 100%);
+
+
+---------- hero ---------- */
     var(--black);
 }
 .hero-media {
@@ -194,13 +201,48 @@ ul { list-style: none; }
   z-index: 0;
 }
 .hero-bg-img {
+  position: absolute;
+  inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.6s ease, transform 7s ease-out;
+}
+.hero-bg-img.active {
   opacity: 0.55;
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-img { transition: opacity 0.6s ease; transform: none; }
+}
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(233,172,31,0.5);
+  background: rgba(10,10,10,0.35);
+  color: var(--gold-light);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+.hero-arrow:hover { background: rgba(10,10,10,0.7); border-color: var(--gold); }
+.hero-prev { left: 24px; }
+.hero-next { right: 24px; }
+@media (max-width: 640px) {
+  .hero-arrow { width: 38px; height: 38px; font-size: 22px; }
+  .hero-prev { left: 10px; }
+  .hero-next { right: 10px; }
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
+  
   background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.75) 60%, var(--black) 100%);
 }
 .hero-content {
@@ -229,10 +271,12 @@ ul { list-style: none; }
 .hero-sub {
   font-size: 17px;
   color: var(--muted);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+  text-align: center;
   max-width: 560px;
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
 }
-.hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
+.hero-actions { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; padding-top: 96px; }
 
 .scroll-cue {
   position: absolute;

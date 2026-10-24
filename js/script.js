@@ -22,6 +22,32 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // ---- hero background slideshow ----
+  const heroSlides = document.querySelector('.hero-media');
+  if (heroSlides) {
+    const SLIDE_DELAY = 6000; // ms each image is shown
+    let current = 0;
+    let timer;
+
+    function showSlide(step) {
+      // query each time so images removed by onerror drop out of the rotation
+      const slides = heroSlides.querySelectorAll('.hero-bg-img');
+      if (slides.length < 2) return;
+      slides.forEach(s => s.classList.remove('active'));
+      current = (current + step + slides.length) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    function restartTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => showSlide(1), SLIDE_DELAY);
+    }
+
+    document.getElementById('heroPrev')?.addEventListener('click', () => { showSlide(-1); restartTimer(); });
+    document.getElementById('heroNext')?.addEventListener('click', () => { showSlide(1); restartTimer(); });
+    restartTimer();
+  }
+
   // ---- mobile nav toggle ----
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');
